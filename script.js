@@ -7,3 +7,6 @@ const tags = [
 ];
 
 
+// Get DOM elements
+
+const optionsContainer = document.querySelector('.options');

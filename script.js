@@ -11,4 +11,5 @@ const tags = [
 
 const optionsContainer = document.querySelector('.options');
 const outputContainer = document.querySelector('.output');
-const tagsSelect = document.querySelector.apply('.tags');
+const tagsSelect = document.getElementById('.tags');
+const paraghapsSelect = document.getElementById('.paraghaps');

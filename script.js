@@ -10,3 +10,4 @@ const tags = [
 // Get DOM elements
 
 const optionsContainer = document.querySelector('.options');
+const outputContainer = document.querySelector('.output');

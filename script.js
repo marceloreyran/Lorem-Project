@@ -13,3 +13,9 @@ const optionsContainer = document.querySelector('.options');
 const outputContainer = document.querySelector('.output');
 const tagsSelect = document.getElementById('.tags');
 const paraghapsSelect = document.getElementById('.paraghaps');
+const wordsSlider =
+    document.getElementById("words");
+const paragraphsValue =
+    document.getElementById(
+        "paragraphsValue"
+    );

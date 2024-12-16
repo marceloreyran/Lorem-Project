@@ -19,3 +19,37 @@ const paragraphsValue =
     document.getElementById(
         "paragraphsValue"
     );
+
+    // Create Options UI
+function createOptionsUI() {
+
+    //  With tag options, fill up the <select> element.
+        tagOptions.forEach((tag) => {
+            const option =
+                document.createElement(
+                    "option"
+                );
+            option.value = tag;
+            option.textContent = `<${tag}>`;
+            tagsSelect.appendChild(option);
+        });
+
+        //  Event listeners for sliders
+    paragraphsSlider.addEventListener(
+        "input",
+        updateParagraphsValue
+    );
+    wordsSlider.addEventListener(
+        "input",
+        updateWordsValue
+    );
+
+    const generateButton =
+        document.getElementById(
+            "generate"
+        );
+    generateButton.addEventListener(
+        "click",
+        generateLoremIpsum
+    );
+}

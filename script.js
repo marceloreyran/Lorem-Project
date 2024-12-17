@@ -53,3 +53,9 @@ function createOptionsUI() {
         generateLoremIpsum
     );
 }
+
+//Update the displayed value for the paragraphs 
+function updateParagraphsValue(){
+    paragraphsValue.textContent = paragraphsSlider.value;
+}
+

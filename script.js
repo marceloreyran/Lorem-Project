@@ -34,7 +34,7 @@ function createOptionsUI() {
             tagsSelect.appendChild(option);
         });
 
-        //  Event listeners for sliders
+        // Event listeners for sliders
     paragraphsSlider.addEventListener(
         "input",
         updateParagraphsValue
@@ -59,3 +59,10 @@ function updateParagraphsValue(){
     paragraphsValue.textContent = paragraphsSlider.value;
 }
 
+ //  Use a placeholder text as an 
+    //  Example for illustrating.
+    const placeholderText =
+        `Lorem ipsum dolor sit amet 
+        consectetur adipiscing elit sed 
+        do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua.`;

@@ -66,3 +66,9 @@ function updateParagraphsValue(){
         consectetur adipiscing elit sed 
         do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.`;
+
+
+    // Create an array of paragraphs
+    const loremIpsumArray = new Array(
+        paragraphs
+    ).fill("");

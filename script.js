@@ -72,3 +72,18 @@ function updateParagraphsValue(){
     const loremIpsumArray = new Array(
         paragraphs
     ).fill("");
+
+    // Generate words for each paragraph
+    for (
+        let i = 0;
+        i < paragraphs;
+        i++
+    ) {
+        const words = generateWords(
+            wordsPerParagraph
+        );
+        loremIpsumArray[i] =
+            includeHtml === "Yes"
+                ? `<${tag}>${words}</${tag}>`
+                : words;
+    }

@@ -1,40 +1,49 @@
-// Scripts
+// Script.js
 
-//Constants for tags options
-const tags = [
-    'p','h1','h2',
-    'h3','h4','h5','span'
+// Constants for tag options
+const tagOptions = [
+    "p", "h1", "h2",
+    "h3", "h4", "h5",
+    "h6", "span",
 ];
 
-
 // Get DOM elements
-
-const optionsContainer = document.querySelector('.options');
-const outputContainer = document.querySelector('.output');
-const tagsSelect = document.getElementById('.tags');
-const paraghapsSelect = document.getElementById('.paraghaps');
+const optionsContainer =
+    document.querySelector(".options");
+const outputContainer =
+    document.querySelector(".output");
+const tagsSelect =
+    document.getElementById("tags");
+const paragraphsSlider =
+    document.getElementById(
+        "paragraphs"
+    );
 const wordsSlider =
     document.getElementById("words");
 const paragraphsValue =
     document.getElementById(
         "paragraphsValue"
     );
+const wordsValue =
+    document.getElementById(
+        "wordsValue"
+    );
 
-    // Create Options UI
+// Create Options UI
 function createOptionsUI() {
 
-    //  With tag options, fill up the <select> element.
-        tagOptions.forEach((tag) => {
-            const option =
-                document.createElement(
-                    "option"
-                );
-            option.value = tag;
-            option.textContent = `<${tag}>`;
-            tagsSelect.appendChild(option);
-        });
+//  With tag options, fill up the <select> element.
+    tagOptions.forEach((tag) => {
+        const option =
+            document.createElement(
+                "option"
+            );
+        option.value = tag;
+        option.textContent = `<${tag}>`;
+        tagsSelect.appendChild(option);
+    });
 
-        // Event listeners for sliders
+//  Event listeners for sliders
     paragraphsSlider.addEventListener(
         "input",
         updateParagraphsValue
@@ -54,19 +63,60 @@ function createOptionsUI() {
     );
 }
 
-//Update the displayed value for the paragraphs 
-function updateParagraphsValue(){
-    paragraphsValue.textContent = paragraphsSlider.value;
+// Update the displayed value for Paragraphs
+function updateParagraphsValue() {
+    paragraphsValue.textContent =
+        paragraphsSlider.value;
 }
 
- //  Use a placeholder text as an 
+// Words per Paragraph have got 
+// to be updated on the display
+function updateWordsValue() {
+    wordsValue.textContent =
+        wordsSlider.value;
+}
+
+// Generate Lorem Ipsum text
+function generateLoremIpsum() {
+    const paragraphs = parseInt(
+        paragraphsSlider.value
+    );
+    const tag =
+        document.getElementById(
+            "tags"
+        ).value;
+    const includeHtml =
+        document.getElementById(
+            "include"
+        ).value;
+    const wordsPerParagraph = parseInt(
+        wordsSlider.value
+    );
+
+    const loremIpsumText = generateText(
+        paragraphs,
+        tag,
+        includeHtml,
+        wordsPerParagraph
+    );
+    displayLoremIpsum(loremIpsumText);
+}
+
+// Function to generate Lorem Ipsum text
+function generateText(
+    paragraphs,
+    tag,
+    includeHtml,
+    wordsPerParagraph
+) {
+    
+    //  Use a placeholder text as an 
     //  Example for illustrating.
     const placeholderText =
         `Lorem ipsum dolor sit amet 
         consectetur adipiscing elit sed 
         do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.`;
-
 
     // Create an array of paragraphs
     const loremIpsumArray = new Array(
@@ -87,7 +137,12 @@ function updateParagraphsValue(){
                 ? `<${tag}>${words}</${tag}>`
                 : words;
     }
-   // Function to generate a specified number of words
+
+    // Join paragraphs into a single string
+    return loremIpsumArray.join("\n");
+}
+
+// Function to generate a specified number of words
 function generateWords(numWords) {
     
     // Lorem Ipsum text for demonstration purposes
@@ -116,7 +171,8 @@ function generateWords(numWords) {
     // Split the Lorem Ipsum text into words
     const words =
         loremIpsumText.split(" ");
-         // Ensure the number of words requested is 
+
+    // Ensure the number of words requested is 
     // within the bounds of the available words
     if (numWords <= words.length) {
         return words
@@ -126,3 +182,13 @@ function generateWords(numWords) {
         return words.join(" ");
     }
 }
+
+// Display Lorem Ipsum text
+function displayLoremIpsum(text) {
+    outputContainer.innerHTML = text;
+}
+
+// Initialize the app
+createOptionsUI();
+
+
